@@ -11,9 +11,17 @@ class IntroscreenWidget extends StatelessWidget {
       key: controller.keyIntroScreen,
       pages: [
         PageViewModel(
-          title: "Welcome",
+          title:
+              "Sistem Presensi Guru menggunakan metode Geofencing dan Haversine Formula berbasis Mobile",
+          body:
+              "Sebagai solusi yang bermanfaat bagi Sekolah untuk tetap dapat melakukan Presensi tanpa menggunakan mesin Presensi sidik jari",
+          image: Center(child: Image.asset('assets/images/ic_launcher.png')),
+        ),
+        PageViewModel(
+          title:
+              "Sistem Presensi Guru menggunakan metode Geofencing dan Haversine Formula berbasis Mobile",
           body: "this simple intro",
-          image: const Center(child: Icon(Icons.home, size: 100.0)),
+          image: Center(child: Image.asset('assets/images/ic_launcher.png')),
         ),
       ],
       onDone: () => controller.goToHome(),
