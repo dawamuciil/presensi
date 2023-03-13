@@ -181,12 +181,12 @@ class LoginView extends GetView<LoginController> {
                 Container(
                   width: MediaQuery.of(context).size.width,
                   margin: EdgeInsets.only(top: 4),
-                  alignment: Alignment.centerLeft,
+                  alignment: Alignment.centerRight,
                   child: TextButton(
                     onPressed: () => Get.toNamed(Routes.FORGOT_PASSWORD),
                     child: Text("Forgot your password?"),
                     style: TextButton.styleFrom(
-                      primary: AppColor.buttontext,
+                      primary: AppColor.error,
                     ),
                   ),
                 ),
