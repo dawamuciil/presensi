@@ -13,15 +13,13 @@ class IntroscreenWidget extends StatelessWidget {
         PageViewModel(
           title:
               "Sistem Presensi Guru menggunakan metode Geofencing dan Haversine Formula berbasis Mobile",
-          body:
-              "Sebagai solusi yang bermanfaat bagi Sekolah untuk tetap dapat melakukan Presensi tanpa menggunakan mesin Presensi sidik jari",
+          body: "Integrated with geofencing & Haversine Formula",
           image: Center(child: Image.asset('assets/images/ic_launcher.png')),
         ),
         PageViewModel(
-          title:
-              "Sistem Presensi Guru menggunakan metode Geofencing dan Haversine Formula berbasis Mobile",
-          body: "this simple intro",
-          image: Center(child: Image.asset('assets/images/ic_launcher.png')),
+          title: "Using (GPS)",
+          body: "Distance From Office",
+          image: Center(child: Image.asset('assets/images/tag.png')),
         ),
       ],
       onDone: () => controller.goToHome(),
