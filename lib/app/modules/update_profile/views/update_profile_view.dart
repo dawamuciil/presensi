@@ -38,7 +38,7 @@ class UpdateProfileView extends GetView<UpdateProfileController> {
                 }
               },
               child: Text(controller.isLoading.isFalse ? "Done" : "Loading..."),
-              style: TextButton.styleFrom(primary: AppColor.card),
+              style: TextButton.styleFrom(primary: AppColor.primary),
             ),
           )
         ],
@@ -95,12 +95,13 @@ class UpdateProfileView extends GetView<UpdateProfileController> {
                             ),
                           ),
                           TextButton(
-                              onPressed: () {
-                                controller.deleteProfile(user["uid"]);
-                              },
-                              child: Text("Delete"),
-                              style: TextButton.styleFrom(
-                                  primary: AppColor.buttontext))
+                            onPressed: () {
+                              controller.deleteProfile(user["uid"]);
+                            },
+                            child: Text("Delete"),
+                            style:
+                                TextButton.styleFrom(primary: AppColor.error),
+                          )
                         ],
                       );
                     } else {

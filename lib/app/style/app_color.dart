@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class AppColor {
   static LinearGradient primaryGradient = LinearGradient(
-    colors: [primary, Color(0xFF4B8673)],
+    colors: [primary, Color(0xFF16A085)],
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
   );
