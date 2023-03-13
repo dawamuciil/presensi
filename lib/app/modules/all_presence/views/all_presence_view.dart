@@ -10,6 +10,8 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import '../controllers/all_presence_controller.dart';
 
 class AllPresenceView extends GetView<AllPresenceController> {
+  const AllPresenceView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,20 +34,21 @@ class AllPresenceView extends GetView<AllPresenceController> {
           Container(
             width: 44,
             height: 44,
-            margin: EdgeInsets.only(bottom: 8, top: 8, right: 8),
+            margin: const EdgeInsets.only(bottom: 8, top: 8, right: 8),
             child: ElevatedButton(
               onPressed: () {
                 Get.dialog(
                   Dialog(
-                    child: Container(
+                    child: SizedBox(
                       height: 372,
                       child: SfDateRangePicker(
                         todayHighlightColor: AppColor.card,
                         headerHeight: 50,
-                        headerStyle: DateRangePickerHeaderStyle(
+                        headerStyle: const DateRangePickerHeaderStyle(
                             textAlign: TextAlign.center),
                         monthViewSettings:
-                            DateRangePickerMonthViewSettings(firstDayOfWeek: 1),
+                            const DateRangePickerMonthViewSettings(
+                                firstDayOfWeek: 1),
                         selectionMode: DateRangePickerSelectionMode.range,
                         selectionColor: AppColor.card,
                         rangeSelectionColor: AppColor.card.withOpacity(0.2),
@@ -67,7 +70,6 @@ class AllPresenceView extends GetView<AllPresenceController> {
                   ),
                 );
               },
-              child: SvgPicture.asset('assets/icons/filter.svg'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColor.card,
                 elevation: 0,
@@ -76,11 +78,12 @@ class AllPresenceView extends GetView<AllPresenceController> {
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
+              child: SvgPicture.asset('assets/icons/filter.svg'),
             ),
           )
         ],
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(1),
+          preferredSize: const Size.fromHeight(1),
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: 1,
@@ -95,16 +98,17 @@ class AllPresenceView extends GetView<AllPresenceController> {
             builder: (context, snapshot) {
               switch (snapshot.connectionState) {
                 case ConnectionState.waiting:
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 case ConnectionState.active:
                 case ConnectionState.done:
                   var data = snapshot.data!.docs;
                   return ListView.separated(
                     itemCount: data.length,
                     shrinkWrap: true,
-                    physics: BouncingScrollPhysics(),
-                    padding: EdgeInsets.all(20),
-                    separatorBuilder: (context, index) => SizedBox(height: 16),
+                    physics: const BouncingScrollPhysics(),
+                    padding: const EdgeInsets.all(20),
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 16),
                     itemBuilder: (context, index) {
                       var presenceData = data[index].data();
                       return PresenceTile(
@@ -113,7 +117,7 @@ class AllPresenceView extends GetView<AllPresenceController> {
                     },
                   );
                 default:
-                  return SizedBox();
+                  return const SizedBox();
               }
             },
           );

@@ -31,10 +31,10 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
           Container(
             height: MediaQuery.of(context).size.height * 35 / 100,
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.only(left: 32),
+            padding: const EdgeInsets.only(left: 32),
             decoration: BoxDecoration(
               gradient: AppColor.primaryGradient,
-              image: DecorationImage(
+              image: const DecorationImage(
                 image: AssetImage('assets/images/pattern-1-1.png'),
                 fit: BoxFit.cover,
               ),
@@ -42,7 +42,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Text(
                   "Sistem Presensi Guru With Geolocation & Haversine Formula",
                   style: TextStyle(
@@ -65,17 +65,18 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
             height: MediaQuery.of(context).size.height * 65 / 100,
             width: MediaQuery.of(context).size.width,
             color: Colors.white,
-            padding: EdgeInsets.only(left: 20, right: 20, top: 36, bottom: 84),
+            padding:
+                const EdgeInsets.only(left: 20, right: 20, top: 36, bottom: 84),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  margin: EdgeInsets.only(bottom: 24),
+                  margin: const EdgeInsets.only(bottom: 24),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Reset Password',
                         style: TextStyle(
                           fontSize: 18,
@@ -83,7 +84,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Text(
                         "We will send password reset link to\nyour email.",
                         style: TextStyle(
@@ -96,8 +97,8 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.only(left: 14, right: 14, top: 4),
-                  margin: EdgeInsets.only(bottom: 24),
+                  padding: const EdgeInsets.only(left: 14, right: 14, top: 4),
+                  margin: const EdgeInsets.only(bottom: 24),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8),
@@ -105,7 +106,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                         width: 1, color: AppColor.secondaryExtraSoft),
                   ),
                   child: TextField(
-                    style: TextStyle(fontSize: 14, fontFamily: 'poppins'),
+                    style: const TextStyle(fontSize: 14, fontFamily: 'poppins'),
                     maxLines: 1,
                     controller: controller.emailC,
                     decoration: InputDecoration(
@@ -129,7 +130,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                   ),
                 ),
                 Obx(
-                  () => Container(
+                  () => SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: ElevatedButton(
                       onPressed: () async {
@@ -137,22 +138,22 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                           controller.sendEmail();
                         }
                       },
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 18),
+                        backgroundColor: AppColor.primary,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
                       child: Text(
                         (controller.isLoading.isFalse)
                             ? 'Send to email'
                             : 'Loading...',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                           fontFamily: 'poppins',
                           fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(vertical: 18),
-                        elevation: 0,
-                        primary: AppColor.primary,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
                         ),
                       ),
                     ),

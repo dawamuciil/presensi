@@ -73,19 +73,19 @@ class AddPelatihView extends GetView<AddPelatihController> {
                     controller.addpelatih();
                   }
                 },
-                child: Text(
-                  (controller.isLoading.isFalse) ? 'Add Guru' : 'Loading...',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontFamily: 'poppins',
-                  ),
-                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColor.primary,
                   padding: const EdgeInsets.symmetric(vertical: 18),
                   elevation: 0,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: Text(
+                  (controller.isLoading.isFalse) ? 'Add Guru' : 'Loading...',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'poppins',
                   ),
                 ),
               ),

@@ -9,6 +9,8 @@ import '../controllers/detail_presence_controller.dart';
 
 class DetailPresenceView extends GetView<DetailPresenceController> {
   final Map<String, dynamic> presenceData = Get.arguments;
+
+  DetailPresenceView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +30,7 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
         elevation: 0,
         centerTitle: true,
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(1),
+          preferredSize: const Size.fromHeight(1),
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: 1,
@@ -38,13 +40,13 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
       ),
       body: ListView(
         shrinkWrap: true,
-        padding: EdgeInsets.all(20),
-        physics: BouncingScrollPhysics(),
+        padding: const EdgeInsets.all(20),
+        physics: const BouncingScrollPhysics(),
         children: [
           // check in ============================================
           Container(
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
             decoration: BoxDecoration(
               color: AppColor.card,
               borderRadius: BorderRadius.circular(8),
@@ -62,16 +64,17 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'check in',
                           style: TextStyle(color: Colors.white),
                         ),
-                        SizedBox(height: 4),
+                        const SizedBox(height: 4),
                         Text(
                           (presenceData["masuk"] == null)
                               ? "-"
-                              : "${DateFormat.jm().format(DateTime.parse(presenceData["masuk"]["date"]))}",
-                          style: TextStyle(
+                              : DateFormat.jm().format(DateTime.parse(
+                                  presenceData["masuk"]["date"])),
+                          style: const TextStyle(
                               color: Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.w600),
@@ -80,37 +83,38 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
                     ),
                     //presence date
                     Text(
-                      "${DateFormat.yMMMMEEEEd().format(DateTime.parse(presenceData["date"]))}",
-                      style: TextStyle(color: Colors.white),
+                      DateFormat.yMMMMEEEEd()
+                          .format(DateTime.parse(presenceData["date"])),
+                      style: const TextStyle(color: Colors.white),
                     ),
                   ],
                 ),
-                SizedBox(height: 14),
-                Text(
+                const SizedBox(height: 14),
+                const Text(
                   'status',
                   style: TextStyle(color: Colors.white),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
                   (presenceData["masuk"]?["in_area"] == true)
                       ? "In area presence"
                       : "Outside area presence",
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.w600),
                 ),
-                SizedBox(height: 14),
-                Text(
+                const SizedBox(height: 14),
+                const Text(
                   'address',
                   style: TextStyle(color: Colors.white),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
                   (presenceData["masuk"] == null)
                       ? "-"
                       : "${presenceData["masuk"]["address"]}",
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -120,11 +124,11 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
               ],
             ),
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           // check out ===========================================
           Container(
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(8),
@@ -146,11 +150,12 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
                           'check out',
                           style: TextStyle(color: AppColor.secondary),
                         ),
-                        SizedBox(height: 4),
+                        const SizedBox(height: 4),
                         Text(
                           (presenceData["keluar"] == null)
                               ? "-"
-                              : "${DateFormat.jm().format(DateTime.parse(presenceData["keluar"]["date"]))}",
+                              : DateFormat.jm().format(DateTime.parse(
+                                  presenceData["keluar"]["date"])),
                           style: TextStyle(
                               color: AppColor.secondary,
                               fontSize: 16,
@@ -160,17 +165,18 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
                     ),
                     //presence date
                     Text(
-                      "${DateFormat.yMMMMEEEEd().format(DateTime.parse(presenceData["date"]))}",
+                      DateFormat.yMMMMEEEEd()
+                          .format(DateTime.parse(presenceData["date"])),
                       style: TextStyle(color: AppColor.secondary),
                     ),
                   ],
                 ),
-                SizedBox(height: 14),
+                const SizedBox(height: 14),
                 Text(
                   'status',
                   style: TextStyle(color: AppColor.secondary),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
                   (presenceData["keluar"]?["in_area"] == true)
                       ? "In area presence"
@@ -180,12 +186,12 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
                       fontSize: 16,
                       fontWeight: FontWeight.w600),
                 ),
-                SizedBox(height: 14),
+                const SizedBox(height: 14),
                 Text(
                   'address',
                   style: TextStyle(color: AppColor.secondary),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
                   (presenceData["keluar"] == null)
                       ? "-"

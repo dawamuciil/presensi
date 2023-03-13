@@ -30,7 +30,7 @@ class AllPresenceController extends GetxController {
           .collection("presence")
           .where("date", isGreaterThan: start!.toIso8601String())
           .where("date",
-              isLessThan: end.add(Duration(days: 1)).toIso8601String())
+              isLessThan: end.add(const Duration(days: 1)).toIso8601String())
           .orderBy(
             "date",
             descending: true,

@@ -19,14 +19,6 @@ class AddPelatihController extends GetxController {
     if (passAdminC.text.isNotEmpty) {
       isLoadingAddPelatih.value = true;
       try {
-        String emailAdmin = auth.currentUser!.email!;
-
-        UserCredential userCredentialAdmin =
-            await auth.signInWithEmailAndPassword(
-          email: emailAdmin,
-          password: passAdminC.text,
-        );
-
         UserCredential pelatihCredential =
             await auth.createUserWithEmailAndPassword(
                 email: emailC.text, password: "Guruminu");
@@ -48,10 +40,6 @@ class AddPelatihController extends GetxController {
 
           await auth.signOut();
 
-          UserCredential userCredentialAdmin =
-              await auth.signInWithEmailAndPassword(
-                  email: emailAdmin, password: passAdminC.text);
-
           Get.back();
           Get.back();
           Get.snackbar("Berhasil", "Berhasil Menambahkan Pelatih");
@@ -67,7 +55,7 @@ class AddPelatihController extends GetxController {
           Get.snackbar(
               "terjadi Kesalahan", "Password Admin Salah, Tidak dapat Login");
         } else {
-          Get.snackbar("terjadi Kesalahan", "${e.code}");
+          Get.snackbar("terjadi Kesalahan", e.code);
         }
       } catch (e) {
         isLoadingAddPelatih.value = false;
