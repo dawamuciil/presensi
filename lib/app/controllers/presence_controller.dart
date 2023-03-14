@@ -148,7 +148,7 @@ class PresenceController extends GetxController {
         await presenceCollection.get();
 
     bool in_area = false;
-    if (distance <= 148) {
+    if (distance <= 200) {
       in_area = true;
     }
 
