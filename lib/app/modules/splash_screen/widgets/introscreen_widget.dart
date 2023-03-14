@@ -3,7 +3,7 @@ import 'package:introduction_screen/introduction_screen.dart';
 
 class IntroscreenWidget extends StatelessWidget {
   final controller;
-  IntroscreenWidget({this.controller});
+  const IntroscreenWidget({super.key, this.controller});
 
   @override
   Widget build(BuildContext context) {

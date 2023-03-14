@@ -5,6 +5,8 @@ import 'package:presence/app/controllers/page_index_controller.dart';
 import 'package:presence/app/style/app_color.dart';
 
 class CustomBottomNavigationBar extends GetView<PageIndexController> {
+  const CustomBottomNavigationBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,7 +14,7 @@ class CustomBottomNavigationBar extends GetView<PageIndexController> {
       width: MediaQuery.of(context).size.width,
       color: Colors.transparent,
       child: Stack(
-        alignment: new FractionalOffset(.5, 1.0),
+        alignment: const FractionalOffset(.5, 1.0),
         children: [
           Positioned(
             bottom: 0,
@@ -25,24 +27,24 @@ class CustomBottomNavigationBar extends GetView<PageIndexController> {
                 ),
               ),
               child: BottomAppBar(
-                shape: CircularNotchedRectangle(),
+                shape: const CircularNotchedRectangle(),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     Expanded(
                       child: InkWell(
                         onTap: () => controller.changePage(0),
-                        child: Container(
+                        child: SizedBox(
                           height: 65,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
+                                margin: const EdgeInsets.only(bottom: 4),
                                 child: (controller.pageIndex.value == 0)
                                     ? SvgPicture.asset(
                                         'assets/icons/home-active.svg')
                                     : SvgPicture.asset('assets/icons/home.svg'),
-                                margin: EdgeInsets.only(bottom: 4),
                               ),
                               Text(
                                 "Home",
@@ -58,7 +60,7 @@ class CustomBottomNavigationBar extends GetView<PageIndexController> {
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width / 4,
-                      margin: EdgeInsets.only(top: 24),
+                      margin: const EdgeInsets.only(top: 24),
                       alignment: Alignment.center,
                       child: Text(
                         "Presence",
@@ -71,18 +73,18 @@ class CustomBottomNavigationBar extends GetView<PageIndexController> {
                     Expanded(
                       child: InkWell(
                         onTap: () => controller.changePage(2),
-                        child: Container(
+                        child: SizedBox(
                           height: 65,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
+                                margin: const EdgeInsets.only(bottom: 4),
                                 child: (controller.pageIndex.value == 2)
                                     ? SvgPicture.asset(
                                         'assets/icons/profile-active.svg')
                                     : SvgPicture.asset(
                                         'assets/icons/profile.svg'),
-                                margin: EdgeInsets.only(bottom: 4),
                               ),
                               Text(
                                 "Profile",
@@ -118,7 +120,7 @@ class CustomBottomNavigationBar extends GetView<PageIndexController> {
                           'assets/icons/fingerprint.svg',
                           color: Colors.white,
                         )
-                      : Center(
+                      : const Center(
                           child: CircularProgressIndicator(
                             color: Colors.white,
                           ),

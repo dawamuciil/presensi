@@ -37,8 +37,8 @@ class UpdateProfileView extends GetView<UpdateProfileController> {
                   await controller.updateProfile(user["uid"]);
                 }
               },
+              style: TextButton.styleFrom(foregroundColor: AppColor.primary),
               child: Text(controller.isLoading.isFalse ? "Done" : "Loading..."),
-              style: TextButton.styleFrom(primary: AppColor.primary),
             ),
           )
         ],
@@ -46,7 +46,7 @@ class UpdateProfileView extends GetView<UpdateProfileController> {
         elevation: 0,
         centerTitle: true,
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(1),
+          preferredSize: const Size.fromHeight(1),
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: 1,
@@ -56,14 +56,14 @@ class UpdateProfileView extends GetView<UpdateProfileController> {
       ),
       body: ListView(
         shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.all(20),
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.all(20),
         children: [
-          Text(
+          const Text(
             "Photo Profile",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -71,7 +71,7 @@ class UpdateProfileView extends GetView<UpdateProfileController> {
                 builder: (c) {
                   if (c.image != null) {
                     return ClipOval(
-                      child: Container(
+                      child: SizedBox(
                         height: 100,
                         width: 100,
                         child: Image.file(
@@ -85,7 +85,7 @@ class UpdateProfileView extends GetView<UpdateProfileController> {
                       return Column(
                         children: [
                           ClipOval(
-                            child: Container(
+                            child: SizedBox(
                               height: 100,
                               width: 100,
                               child: Image.network(
@@ -98,14 +98,14 @@ class UpdateProfileView extends GetView<UpdateProfileController> {
                             onPressed: () {
                               controller.deleteProfile(user["uid"]);
                             },
-                            child: Text("Delete"),
-                            style:
-                                TextButton.styleFrom(primary: AppColor.error),
+                            style: TextButton.styleFrom(
+                                foregroundColor: AppColor.error),
+                            child: const Text("Delete"),
                           )
                         ],
                       );
                     } else {
-                      return Text("no image choosen");
+                      return const Text("no image choosen");
                     }
                   }
                 },
@@ -114,8 +114,9 @@ class UpdateProfileView extends GetView<UpdateProfileController> {
                   onPressed: () {
                     controller.pickImage();
                   },
-                  child: Text("choose file"),
-                  style: TextButton.styleFrom(primary: AppColor.buttontext))
+                  style: TextButton.styleFrom(
+                      foregroundColor: AppColor.buttontext),
+                  child: const Text("choose file"))
             ],
           ),
           TextField(

@@ -9,7 +9,8 @@ class CustomInput extends StatefulWidget {
   final EdgeInsetsGeometry margin;
   final bool obsecureText;
   final Widget? suffixIcon;
-  CustomInput({
+  const CustomInput({
+    super.key,
     required this.controller,
     required this.label,
     required this.hint,
@@ -26,12 +27,11 @@ class CustomInput extends StatefulWidget {
 class _CustomInputState extends State<CustomInput> {
   @override
   Widget build(BuildContext context) {
-    print("builded");
     return Material(
       color: Colors.white,
       child: Container(
         width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.only(left: 14, right: 14, top: 4),
+        padding: const EdgeInsets.only(left: 14, right: 14, top: 4),
         margin: widget.margin,
         decoration: BoxDecoration(
           color: (widget.disabled == false)
@@ -43,11 +43,11 @@ class _CustomInputState extends State<CustomInput> {
         child: TextField(
           readOnly: widget.disabled,
           obscureText: widget.obsecureText,
-          style: TextStyle(fontSize: 14, fontFamily: 'poppins'),
+          style: const TextStyle(fontSize: 14, fontFamily: 'poppins'),
           maxLines: 1,
           controller: widget.controller,
           decoration: InputDecoration(
-            suffixIcon: widget.suffixIcon ?? SizedBox(),
+            suffixIcon: widget.suffixIcon ?? const SizedBox(),
             label: Text(
               widget.label,
               style: TextStyle(

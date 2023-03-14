@@ -17,7 +17,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CustomBottomNavigationBar(),
+      bottomNavigationBar: const CustomBottomNavigationBar(),
       extendBody: true,
       body: StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
           stream: controller.streamUser(),
@@ -130,7 +130,7 @@ class HomeView extends GetView<HomeController> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
-                                    margin: EdgeInsets.only(bottom: 6),
+                                    margin: const EdgeInsets.only(bottom: 6),
                                     child: const Text(
                                       'Distance from office',
                                       style: TextStyle(fontSize: 10),
@@ -138,8 +138,8 @@ class HomeView extends GetView<HomeController> {
                                   ),
                                   Obx(
                                     () => Text(
-                                      '${controller.officeDistance.value}',
-                                      style: TextStyle(
+                                      controller.officeDistance.value,
+                                      style: const TextStyle(
                                         fontSize: 24,
                                         fontFamily: 'poppins',
                                         fontWeight: FontWeight.w700,
@@ -150,7 +150,7 @@ class HomeView extends GetView<HomeController> {
                               ),
                             ),
                           ),
-                          SizedBox(width: 16),
+                          const SizedBox(width: 16),
                           Expanded(
                             child: GestureDetector(
                               onTap: controller.launchOfficeOnMap,
@@ -160,13 +160,13 @@ class HomeView extends GetView<HomeController> {
                                 decoration: BoxDecoration(
                                   color: AppColor.primarybg,
                                   borderRadius: BorderRadius.circular(8),
-                                  image: DecorationImage(
+                                  image: const DecorationImage(
                                     image: AssetImage('assets/images/map.JPG'),
                                     fit: BoxFit.cover,
                                     opacity: 0.3,
                                   ),
                                 ),
-                                child: Text(
+                                child: const Text(
                                   'Open in maps',
                                   style: TextStyle(fontWeight: FontWeight.w600),
                                 ),
@@ -177,33 +177,32 @@ class HomeView extends GetView<HomeController> {
                       ),
                     ),
                     // Section 4 - Presence History
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Presence History",
-                            style: TextStyle(
-                              fontFamily: "poppins",
-                              fontWeight: FontWeight.w600,
-                            ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Presence History",
+                          style: TextStyle(
+                            fontFamily: "poppins",
+                            fontWeight: FontWeight.w600,
                           ),
-                          TextButton(
-                            onPressed: () => Get.toNamed(Routes.ALL_PRESENCE),
-                            child: Text("show all"),
-                            style: TextButton.styleFrom(
-                              primary: AppColor.button,
-                            ),
+                        ),
+                        TextButton(
+                          onPressed: () => Get.toNamed(Routes.ALL_PRESENCE),
+                          style: TextButton.styleFrom(
+                            foregroundColor: AppColor.button,
                           ),
-                        ],
-                      ),
+                          child: const Text("show all"),
+                        ),
+                      ],
                     ),
                     StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
                         stream: controller.streamLastPresence(),
                         builder: (context, snapshot) {
                           switch (snapshot.connectionState) {
                             case ConnectionState.waiting:
-                              return Center(child: CircularProgressIndicator());
+                              return const Center(
+                                  child: CircularProgressIndicator());
                             case ConnectionState.active:
                             case ConnectionState.done:
                               List<QueryDocumentSnapshot<Map<String, dynamic>>>
@@ -211,10 +210,10 @@ class HomeView extends GetView<HomeController> {
                               return ListView.separated(
                                 itemCount: listPresence.length,
                                 shrinkWrap: true,
-                                physics: BouncingScrollPhysics(),
+                                physics: const BouncingScrollPhysics(),
                                 padding: EdgeInsets.zero,
                                 separatorBuilder: (context, index) =>
-                                    SizedBox(height: 16),
+                                    const SizedBox(height: 16),
                                 itemBuilder: (context, index) {
                                   Map<String, dynamic> presenceData =
                                       listPresence[index].data();
@@ -224,15 +223,15 @@ class HomeView extends GetView<HomeController> {
                                 },
                               );
                             default:
-                              return SizedBox();
+                              return const SizedBox();
                           }
                         }),
                   ],
                 );
               case ConnectionState.waiting:
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               default:
-                return Center(child: Text("Error"));
+                return const Center(child: Text("Error"));
             }
           }),
     );

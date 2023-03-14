@@ -5,16 +5,17 @@ import 'package:presence/app/style/app_color.dart';
 class PresenceCard extends StatelessWidget {
   final Map<String, dynamic> userData;
   final Map<String, dynamic>? todayPresenceData;
-  PresenceCard({required this.userData, required this.todayPresenceData});
+  const PresenceCard(
+      {super.key, required this.userData, required this.todayPresenceData});
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.only(left: 24, top: 24, right: 24, bottom: 16),
+      padding: const EdgeInsets.only(left: 24, top: 24, right: 24, bottom: 16),
       decoration: BoxDecoration(
         gradient: AppColor.primaryGradient,
         borderRadius: BorderRadius.circular(8),
-        image: DecorationImage(
+        image: const DecorationImage(
           image: AssetImage('assets/images/pattern-1.png'),
           fit: BoxFit.cover,
         ),
@@ -25,7 +26,7 @@ class PresenceCard extends StatelessWidget {
           // job
           Text(
             userData["job"],
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontFamily: 'poppins',
               fontWeight: FontWeight.w500,
@@ -33,10 +34,10 @@ class PresenceCard extends StatelessWidget {
           ),
           //  Employee ID
           Container(
-            margin: EdgeInsets.only(top: 4, bottom: 12),
+            margin: const EdgeInsets.only(top: 4, bottom: 12),
             child: Text(
               userData["nip"],
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontFamily: 'poppins',
                 fontSize: 18,
@@ -48,7 +49,7 @@ class PresenceCard extends StatelessWidget {
           // check in - check out box
           Container(
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
             decoration: BoxDecoration(
               color: AppColor.primarySoft,
               borderRadius: BorderRadius.circular(8),
@@ -60,7 +61,7 @@ class PresenceCard extends StatelessWidget {
                   child: Column(
                     children: [
                       Container(
-                        margin: EdgeInsets.only(bottom: 6),
+                        margin: const EdgeInsets.only(bottom: 6),
                         child: Text(
                           "check in",
                           style: TextStyle(
@@ -72,7 +73,8 @@ class PresenceCard extends StatelessWidget {
                       Text(
                         (todayPresenceData?["masuk"] == null)
                             ? "-"
-                            : "${DateFormat.jms().format(DateTime.parse(todayPresenceData!["masuk"]["date"]))}",
+                            : DateFormat.jms().format(DateTime.parse(
+                                todayPresenceData!["masuk"]["date"])),
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
@@ -92,7 +94,7 @@ class PresenceCard extends StatelessWidget {
                   child: Column(
                     children: [
                       Container(
-                        margin: EdgeInsets.only(bottom: 6),
+                        margin: const EdgeInsets.only(bottom: 6),
                         child: Text(
                           "check out",
                           style: TextStyle(
@@ -104,7 +106,8 @@ class PresenceCard extends StatelessWidget {
                       Text(
                         (todayPresenceData?["keluar"] == null)
                             ? "-"
-                            : "${DateFormat.jms().format(DateTime.parse(todayPresenceData!["keluar"]["date"]))}",
+                            : DateFormat.jms().format(DateTime.parse(
+                                todayPresenceData!["keluar"]["date"])),
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,

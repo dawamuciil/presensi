@@ -36,12 +36,11 @@ class HomeController extends GetxController {
         CompanyData.office['longitude'],
       );
     } catch (e) {
-      CustomToast.errorToast('Error', 'Error : ${e}');
+      CustomToast.errorToast('Error', 'Error : $e');
     }
   }
 
   Future<String> getDistanceToOffice() async {
-    print('calleeeed');
     Map<String, dynamic> determinePosition = await _determinePosition();
     if (!determinePosition["error"]) {
       Position position = determinePosition["position"];

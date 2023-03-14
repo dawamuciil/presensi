@@ -153,7 +153,7 @@ class LoginView extends GetView<LoginController> {
                   ),
                 ),
                 Obx(
-                  () => Container(
+                  () => SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: ElevatedButton(
                       onPressed: () async {
@@ -161,6 +161,14 @@ class LoginView extends GetView<LoginController> {
                           await controller.login();
                         }
                       },
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 18),
+                        backgroundColor: AppColor.primary,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
                       child: Text(
                         (controller.isLoading.isFalse)
                             ? 'Log in'
@@ -169,14 +177,6 @@ class LoginView extends GetView<LoginController> {
                           fontSize: 16,
                           fontFamily: 'poppins',
                           fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 18),
-                        elevation: 0,
-                        primary: AppColor.primary,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
                         ),
                       ),
                     ),
@@ -188,10 +188,10 @@ class LoginView extends GetView<LoginController> {
                   alignment: Alignment.centerRight,
                   child: TextButton(
                     onPressed: () => Get.toNamed(Routes.FORGOT_PASSWORD),
-                    child: const Text("Forgot your password?"),
                     style: TextButton.styleFrom(
-                      primary: AppColor.error,
+                      foregroundColor: AppColor.error,
                     ),
+                    child: const Text("Forgot your password?"),
                   ),
                 ),
               ],

@@ -33,7 +33,7 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.SPLASH,
-      page: () => SplashScreenView(),
+      page: () => const SplashScreenView(),
       binding: SplashScreenBinding(),
       transition: Transition.fadeIn,
     ),
@@ -56,7 +56,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.LOGIN,
-      page: () => LoginView(),
+      page: () => const LoginView(),
       binding: LoginBinding(),
     ),
     GetPage(
@@ -82,12 +82,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.UPDATE_PASSWORD,
-      page: () => UpdatePasswordView(),
+      page: () => const UpdatePasswordView(),
       binding: UpdatePasswordBinding(),
     ),
     GetPage(
       name: _Paths.ALL_PRESENCE,
-      page: () => AllPresenceView(),
+      page: () => const AllPresenceView(),
       binding: AllPresenceBinding(),
     ),
   ];

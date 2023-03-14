@@ -13,26 +13,26 @@ class CustomAlertDialog {
   }) {
     Get.defaultDialog(
       title: "",
-      contentPadding: EdgeInsets.symmetric(horizontal: 24, vertical: 0),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 0),
       radius: 8,
       titlePadding: EdgeInsets.zero,
-      titleStyle: TextStyle(fontSize: 0),
+      titleStyle: const TextStyle(fontSize: 0),
       content: Column(
         children: [
           Container(
-            margin: EdgeInsets.symmetric(vertical: 24),
+            margin: const EdgeInsets.symmetric(vertical: 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontFamily: 'poppins',
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 Text(
                   message,
                   style: TextStyle(
@@ -44,43 +44,43 @@ class CustomAlertDialog {
             ),
           ),
           CustomInput(
-            margin: EdgeInsets.only(bottom: 24),
+            margin: const EdgeInsets.only(bottom: 24),
             controller: controller,
             label: 'password',
             hint: '*************',
             obsecureText: true,
           ),
           Container(
-            margin: EdgeInsets.only(bottom: 16),
+            margin: const EdgeInsets.only(bottom: 16),
             child: Row(
               children: [
                 Expanded(
                   flex: 6,
                   child: ElevatedButton(
                     onPressed: onCancel,
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: AppColor.primary,
+                      backgroundColor: AppColor.primaryExtraSoft,
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      elevation: 0,
+                    ),
                     child: Text(
                       "cancel",
                       style: TextStyle(color: AppColor.secondarySoft),
                     ),
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(vertical: 12),
-                      primary: AppColor.primaryExtraSoft,
-                      elevation: 0,
-                      onPrimary: AppColor.primary,
-                    ),
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Expanded(
                   flex: 6,
                   child: ElevatedButton(
                     onPressed: onConfirm,
-                    child: Text("confirm"),
                     style: ElevatedButton.styleFrom(
-                      primary: AppColor.card,
-                      padding: EdgeInsets.symmetric(vertical: 12),
+                      backgroundColor: AppColor.card,
+                      padding: const EdgeInsets.symmetric(vertical: 12),
                       elevation: 0,
                     ),
+                    child: const Text("confirm"),
                   ),
                 ),
               ],
@@ -99,26 +99,26 @@ class CustomAlertDialog {
   }) {
     Get.defaultDialog(
       title: "",
-      contentPadding: EdgeInsets.symmetric(horizontal: 24, vertical: 0),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 0),
       radius: 8,
       titlePadding: EdgeInsets.zero,
-      titleStyle: TextStyle(fontSize: 0),
+      titleStyle: const TextStyle(fontSize: 0),
       content: Column(
         children: [
           Container(
-            margin: EdgeInsets.only(bottom: 32, top: 24),
+            margin: const EdgeInsets.only(bottom: 32, top: 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontFamily: 'poppins',
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 Text(
                   message,
                   style: TextStyle(
@@ -130,36 +130,36 @@ class CustomAlertDialog {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(bottom: 16),
+            margin: const EdgeInsets.only(bottom: 16),
             child: Row(
               children: [
                 Expanded(
                   flex: 6,
                   child: ElevatedButton(
                     onPressed: onCancel,
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: AppColor.primary,
+                      backgroundColor: AppColor.primaryExtraSoft,
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      elevation: 0,
+                    ),
                     child: Text(
                       "cancel",
                       style: TextStyle(color: AppColor.secondarySoft),
                     ),
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(vertical: 12),
-                      primary: AppColor.primaryExtraSoft,
-                      elevation: 0,
-                      onPrimary: AppColor.primary,
-                    ),
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Expanded(
                   flex: 6,
                   child: ElevatedButton(
                     onPressed: onConfirm,
-                    child: Text("confirm"),
                     style: ElevatedButton.styleFrom(
-                      primary: AppColor.card,
-                      padding: EdgeInsets.symmetric(vertical: 12),
+                      backgroundColor: AppColor.card,
+                      padding: const EdgeInsets.symmetric(vertical: 12),
                       elevation: 0,
                     ),
+                    child: const Text("confirm"),
                   ),
                 ),
               ],

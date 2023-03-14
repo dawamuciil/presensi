@@ -6,7 +6,7 @@ import 'package:presence/app/style/app_color.dart';
 class CustomToast {
   static errorToast(String? title, String? message) {
     Get.rawSnackbar(
-      duration: Duration(seconds: 4),
+      duration: const Duration(seconds: 4),
       dismissDirection: DismissDirection.horizontal,
       messageText: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -15,16 +15,16 @@ class CustomToast {
             "assets/icons/info-circle.svg",
             color: Colors.white,
           ),
-          SizedBox(width: 16),
+          const SizedBox(width: 16),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  margin: EdgeInsets.only(bottom: 4),
+                  margin: const EdgeInsets.only(bottom: 4),
                   child: Text(
                     title ?? "error",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w500,
                       fontFamily: 'poppins',
@@ -33,7 +33,7 @@ class CustomToast {
                 ),
                 Text(
                   message ?? "Add your error message here",
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
               ],
             ),
@@ -41,8 +41,8 @@ class CustomToast {
         ],
       ),
       backgroundColor: AppColor.error,
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 16),
       borderRadius: 8,
       snackPosition: SnackPosition.TOP,
     );
@@ -50,7 +50,7 @@ class CustomToast {
 
   static successToast(String? title, String? message) {
     Get.rawSnackbar(
-      duration: Duration(seconds: 4),
+      duration: const Duration(seconds: 4),
       dismissDirection: DismissDirection.horizontal,
       messageText: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,16 +59,16 @@ class CustomToast {
             "assets/icons/success-circle.svg",
             color: Colors.white,
           ),
-          SizedBox(width: 16),
+          const SizedBox(width: 16),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  margin: EdgeInsets.only(bottom: 4),
+                  margin: const EdgeInsets.only(bottom: 4),
                   child: Text(
                     title ?? "Success",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w500,
                       fontFamily: 'poppins',
@@ -77,7 +77,7 @@ class CustomToast {
                 ),
                 Text(
                   message ?? "Add your success message here",
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
               ],
             ),
@@ -85,8 +85,8 @@ class CustomToast {
         ],
       ),
       backgroundColor: AppColor.success,
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 16),
       borderRadius: 8,
       snackPosition: SnackPosition.TOP,
     );

@@ -28,7 +28,7 @@ class UpdatePasswordView extends GetView<UpdatePasswordController> {
         elevation: 0,
         centerTitle: true,
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(1),
+          preferredSize: const Size.fromHeight(1),
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: 1,
@@ -38,8 +38,8 @@ class UpdatePasswordView extends GetView<UpdatePasswordController> {
       ),
       body: ListView(
         shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.all(20),
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.all(20),
         children: [
           Obx(
             () => CustomInput(
@@ -93,7 +93,7 @@ class UpdatePasswordView extends GetView<UpdatePasswordController> {
           const SizedBox(
             height: 10,
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             child: Obx(
               () => ElevatedButton(
@@ -102,21 +102,21 @@ class UpdatePasswordView extends GetView<UpdatePasswordController> {
                     await controller.updatePass();
                   }
                 },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColor.primary,
+                  padding: const EdgeInsets.symmetric(vertical: 18),
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
                 child: Text(
                   (controller.isLoading.isFalse)
                       ? "Change Password"
                       : 'Loading...',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontFamily: 'poppins',
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: AppColor.primary,
-                  padding: EdgeInsets.symmetric(vertical: 18),
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
                   ),
                 ),
               ),

@@ -143,7 +143,7 @@ class PresenceController extends GetxController {
         DateFormat.yMd().format(DateTime.now()).replaceAll("/", "-");
 
     CollectionReference<Map<String, dynamic>> presenceCollection =
-        await firestore.collection("pelatih").doc(uid).collection("presence");
+        firestore.collection("pelatih").doc(uid).collection("presence");
     QuerySnapshot<Map<String, dynamic>> snapshotPreference =
         await presenceCollection.get();
 
@@ -152,7 +152,7 @@ class PresenceController extends GetxController {
       in_area = true;
     }
 
-    if (snapshotPreference.docs.length == 0) {
+    if (snapshotPreference.docs.isEmpty) {
       //case :  never presence -> set check in presence
       firstPresence(
           presenceCollection, todayDocId, position, address, distance, in_area);

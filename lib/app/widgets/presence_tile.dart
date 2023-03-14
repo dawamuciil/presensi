@@ -6,7 +6,7 @@ import 'package:presence/app/style/app_color.dart';
 
 class PresenceTile extends StatelessWidget {
   final Map<String, dynamic> presenceData;
-  PresenceTile({required this.presenceData});
+  PresenceTile({super.key, required this.presenceData});
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -21,7 +21,8 @@ class PresenceTile extends StatelessWidget {
             color: AppColor.primaryExtraSoft,
           ),
         ),
-        padding: EdgeInsets.only(left: 24, top: 20, right: 29, bottom: 20),
+        padding:
+            const EdgeInsets.only(left: 24, top: 20, right: 29, bottom: 20),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -31,36 +32,38 @@ class PresenceTile extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "check in",
                       style: TextStyle(fontSize: 12),
                     ),
-                    SizedBox(height: 6),
+                    const SizedBox(height: 6),
                     Text(
                       (presenceData["masuk"] == null)
                           ? "-"
-                          : "${DateFormat.jm().format(DateTime.parse(presenceData["masuk"]["date"]))}",
-                      style: TextStyle(
+                          : DateFormat.jm().format(
+                              DateTime.parse(presenceData["masuk"]["date"])),
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(width: 24),
+                const SizedBox(width: 24),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "check out",
                       style: TextStyle(fontSize: 12),
                     ),
-                    SizedBox(height: 6),
+                    const SizedBox(height: 6),
                     Text(
                       (presenceData["keluar"] == null)
                           ? "-"
-                          : "${DateFormat.jm().format(DateTime.parse(presenceData["keluar"]["date"]))}",
-                      style: TextStyle(
+                          : DateFormat.jm().format(
+                              DateTime.parse(presenceData["keluar"]["date"])),
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                       ),
@@ -70,7 +73,8 @@ class PresenceTile extends StatelessWidget {
               ],
             ),
             Text(
-              "${DateFormat.yMMMMEEEEd().format(DateTime.parse(presenceData["date"]))}",
+              DateFormat.yMMMMEEEEd()
+                  .format(DateTime.parse(presenceData["date"])),
               style: TextStyle(
                 fontSize: 10,
                 color: AppColor.secondarySoft,
