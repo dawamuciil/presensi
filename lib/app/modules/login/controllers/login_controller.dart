@@ -16,7 +16,7 @@ class LoginController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;
 
   checkDefaultPassword() {
-    if (passC.text == 'qwertyuiop')
+    if (passC.text == 'Guruminu')
       Get.toNamed(Routes.NEW_PASSWORD);
     else {
       Get.offAllNamed(Routes.HOME);
