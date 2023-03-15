@@ -47,7 +47,7 @@ class PresenceController extends GetxController {
     Position position,
     String address,
     double distance,
-    bool in_area,
+    bool inArea,
   ) async {
     CustomAlertDialog.showPresenceAlert(
       title: "Are you want to check in?",
@@ -62,7 +62,7 @@ class PresenceController extends GetxController {
               "latitude": position.latitude,
               "longitude": position.longitude,
               "address": address,
-              "in_area": in_area,
+              "in_area": inArea,
               "distance": distance,
             }
           },
@@ -79,7 +79,7 @@ class PresenceController extends GetxController {
     Position position,
     String address,
     double distance,
-    bool in_area,
+    bool inArea,
   ) async {
     CustomAlertDialog.showPresenceAlert(
       title: "Are you want to check in?",
@@ -94,7 +94,7 @@ class PresenceController extends GetxController {
               "latitude": position.latitude,
               "longitude": position.longitude,
               "address": address,
-              "in_area": in_area,
+              "in_area": inArea,
               "distance": distance,
             }
           },
@@ -111,7 +111,7 @@ class PresenceController extends GetxController {
     Position position,
     String address,
     double distance,
-    bool in_area,
+    bool inArea,
   ) async {
     CustomAlertDialog.showPresenceAlert(
       title: "Are you want to check out?",
@@ -125,7 +125,7 @@ class PresenceController extends GetxController {
               "latitude": position.latitude,
               "longitude": position.longitude,
               "address": address,
-              "in_area": in_area,
+              "in_area": inArea,
               "distance": distance,
             }
           },
@@ -147,15 +147,15 @@ class PresenceController extends GetxController {
     QuerySnapshot<Map<String, dynamic>> snapshotPreference =
         await presenceCollection.get();
 
-    bool in_area = false;
+    bool inArea = false;
     if (distance <= 200) {
-      in_area = true;
+      inArea = true;
     }
 
     if (snapshotPreference.docs.isEmpty) {
       //case :  never presence -> set check in presence
       firstPresence(
-          presenceCollection, todayDocId, position, address, distance, in_area);
+          presenceCollection, todayDocId, position, address, distance, inArea);
     } else {
       DocumentSnapshot<Map<String, dynamic>> todayDoc =
           await presenceCollection.doc(todayDocId).get();
@@ -170,12 +170,12 @@ class PresenceController extends GetxController {
         } else {
           // case : already check in and not yet check out ( check out )
           checkoutPresence(presenceCollection, todayDocId, position, address,
-              distance, in_area);
+              distance, inArea);
         }
       } else {
         // case : not yet check in today
         checkinPresence(presenceCollection, todayDocId, position, address,
-            distance, in_area);
+            distance, inArea);
       }
     }
   }

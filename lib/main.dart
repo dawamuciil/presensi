@@ -5,11 +5,13 @@ import 'package:presence/app/controllers/page_index_controller.dart';
 import 'package:presence/app/controllers/presence_controller.dart';
 import 'firebase_options.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'app/routes/app_pages.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

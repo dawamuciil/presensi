@@ -6,7 +6,7 @@ import 'package:presence/app/style/app_color.dart';
 
 class PresenceTile extends StatelessWidget {
   final Map<String, dynamic> presenceData;
-  PresenceTile({super.key, required this.presenceData});
+  const PresenceTile({super.key, required this.presenceData});
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -72,14 +72,17 @@ class PresenceTile extends StatelessWidget {
                 ),
               ],
             ),
-            Text(
-              DateFormat.yMMMMEEEEd()
-                  .format(DateTime.parse(presenceData["date"])),
-              style: TextStyle(
-                fontSize: 10,
-                color: AppColor.secondarySoft,
+            Center(
+              heightFactor: 3,
+              child: Text(
+                DateFormat.yMMMMEEEEd()
+                    .format(DateTime.parse(presenceData["date"])),
+                style: const TextStyle(
+                  fontSize: 10,
+                  color: Colors.black,
+                ),
               ),
-            ),
+            )
           ],
         ),
       ),

@@ -2,8 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:presence/app/widgets/dialog/custom_alert_dialog.dart';
+import 'package:presence/app/widgets/toast/custom_toast.dart';
 
-class AddPelatihController extends GetxController {
+class AddGuruController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isLoadingAddPelatih = false.obs;
   TextEditingController nameC = TextEditingController();
@@ -15,7 +17,7 @@ class AddPelatihController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  Future<void> prosesAddPelatih() async {
+  Future<void> prosesAddguru() async {
     if (passAdminC.text.isNotEmpty) {
       isLoadingAddPelatih.value = true;
       try {
@@ -32,7 +34,7 @@ class AddPelatihController extends GetxController {
             "job": jobC.text,
             "email": emailC.text,
             "uid": uid,
-            "role": "pelatih",
+            "role": "guru",
             "createdAt": DateTime.now().toIso8601String(),
           });
 
@@ -42,20 +44,19 @@ class AddPelatihController extends GetxController {
 
           Get.back();
           Get.back();
-          Get.snackbar("Berhasil", "Berhasil Menambahkan Pelatih");
+          CustomToast.successToast('Success', 'success adding Guru');
         }
         isLoadingAddPelatih.value = false;
       } on FirebaseAuthException catch (e) {
         isLoadingAddPelatih.value = false;
         if (e.code == 'weak-password') {
-          Get.snackbar("terjadi Kesalahan", "Password Terlalu Singkat ");
+          CustomToast.errorToast('Error', 'default password too short');
         } else if (e.code == 'email-already-in-use') {
-          Get.snackbar("terjadi Kesalahan", "Email Sudah Terdaftar");
+          CustomToast.errorToast('Error', 'Email already exist');
         } else if (e.code == 'wrong-password') {
-          Get.snackbar(
-              "terjadi Kesalahan", "Password Admin Salah, Tidak dapat Login");
+          CustomToast.errorToast('Error', 'wrong passowrd');
         } else {
-          Get.snackbar("terjadi Kesalahan", e.code);
+          CustomToast.errorToast('Error', 'error : ${e.code}');
         }
       } catch (e) {
         isLoadingAddPelatih.value = false;
@@ -67,52 +68,31 @@ class AddPelatihController extends GetxController {
     }
   }
 
-  Future<void> addpelatih() async {
+  Future<void> addguru() async {
     if (nameC.text.isNotEmpty &&
         jobC.text.isNotEmpty &&
         nipC.text.isNotEmpty &&
         emailC.text.isNotEmpty) {
       isLoading.value = true;
-      Get.defaultDialog(
+      CustomAlertDialog.confirmAdmin(
         title: "Validasi Admin",
-        content: Column(
-          children: [
-            const Text("Masukkan Password untuk Validasi "),
-            const SizedBox(height: 10),
-            TextField(
-              controller: passAdminC,
-              autocorrect: false,
-              obscureText: true,
-              decoration: const InputDecoration(
-                  labelText: "Password", border: OutlineInputBorder()),
-            ),
-          ],
-        ),
-        actions: [
-          OutlinedButton(
-            onPressed: () {
-              isLoading.value = false;
-              Get.back();
-            },
-            child: const Text("Cancel"),
-          ),
-          Obx(
-            () => ElevatedButton(
-              onPressed: () async {
-                if (isLoadingAddPelatih.isFalse) {
-                  await prosesAddPelatih();
-                }
-                isLoading.value = false;
-              },
-              child: Text(
-                  isLoadingAddPelatih.isFalse ? "ADD PELATIH" : "LOADING..."),
-            ),
-          ),
-        ],
+        message:
+            'you need to confirm that you are an administrator by inputting your password',
+        onCancel: () {
+          isLoading.value = false;
+          Get.back();
+        },
+        onConfirm: () async {
+          if (isLoadingAddPelatih.isFalse) {
+            await prosesAddguru();
+            isLoading.value = false;
+          }
+        },
+        controller: passAdminC,
       );
     } else {
-      Get.snackbar(
-          "terjadi Kesalahan", "NIP , Nama , Job, dan email harus diisi. ");
+      isLoading.value = false;
+      CustomToast.errorToast('Error', 'you need to fill all form');
     }
   }
 }

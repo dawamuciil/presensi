@@ -2,8 +2,8 @@ import 'package:get/get.dart';
 import 'package:presence/app/modules/all_presence/bindings/all_presence_binding.dart';
 import 'package:presence/app/modules/all_presence/views/all_presence_view.dart';
 
-import '../modules/add_pelatih/bindings/add_pelatih_binding.dart';
-import '../modules/add_pelatih/views/add_pelatih_view.dart';
+import '../modules/add_guru/bindings/add_guru_binding.dart';
+import '../modules/add_guru/views/add_guru_view.dart';
 import '../modules/detail_presence/bindings/detail_presence_binding.dart';
 import '../modules/detail_presence/views/detail_presence_view.dart';
 import '../modules/forgot_password/bindings/forgot_password_binding.dart';
@@ -61,7 +61,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.NEW_PASSWORD,
-      page: () => const NewPasswordView(),
+      page: () => NewPasswordView(),
       binding: NewPasswordBinding(),
     ),
     GetPage(

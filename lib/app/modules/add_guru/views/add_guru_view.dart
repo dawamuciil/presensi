@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import 'package:presence/app/style/app_color.dart';
 import 'package:presence/app/widgets/custom_input.dart';
 
-import '../controllers/add_pelatih_controller.dart';
+import '../controllers/add_guru_controller.dart';
 
-class AddPelatihView extends GetView<AddPelatihController> {
+class AddPelatihView extends GetView<AddGuruController> {
   const AddPelatihView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class AddPelatihView extends GetView<AddPelatihController> {
         children: [
           CustomInput(
             controller: controller.nipC,
-            label: 'Guru ID',
+            label: 'Nip ID',
             hint: '1000000001',
           ),
           CustomInput(
@@ -61,20 +61,18 @@ class AddPelatihView extends GetView<AddPelatihController> {
             label: 'Job',
             hint: ' Guru',
           ),
-          const SizedBox(
-            height: 8,
-          ),
-          SizedBox(
+          const SizedBox(height: 8),
+          Container(
             width: MediaQuery.of(context).size.width,
             child: Obx(
               () => ElevatedButton(
                 onPressed: () {
                   if (controller.isLoading.isFalse) {
-                    controller.addpelatih();
+                    controller.addguru();
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColor.primary,
+                  primary: AppColor.primary,
                   padding: const EdgeInsets.symmetric(vertical: 18),
                   elevation: 0,
                   shape: RoundedRectangleBorder(
