@@ -87,6 +87,14 @@ class ProfileView extends GetView<ProfileController> {
                               onTap: () => Get.toNamed(Routes.ADD_PELATIH),
                             )
                           : const SizedBox(),
+                      (user["role"] == "admin")
+                          ? MenuTile(
+                              title: 'Report Presence',
+                              icon: SvgPicture.asset(
+                                  'assets/icons/location1.svg'),
+                              onTap: () => Get.toNamed(Routes.REPORT_PRESENCE),
+                            )
+                          : const SizedBox(),
                       MenuTile(
                         title: 'Change Password',
                         icon: SvgPicture.asset(

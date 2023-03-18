@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:presence/app/modules/all_presence/bindings/all_presence_binding.dart';
 import 'package:presence/app/modules/all_presence/views/all_presence_view.dart';
+import 'package:presence/app/modules/report_presence/views/report_presence_view.dart';
 
 import '../modules/add_guru/bindings/add_guru_binding.dart';
 import '../modules/add_guru/views/add_guru_view.dart';
@@ -16,6 +17,7 @@ import '../modules/new_password/bindings/new_password_binding.dart';
 import '../modules/new_password/views/new_password_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
+import '../modules/report_presence/bindings/report_presence_binding.dart';
 import '../modules/splash_screen/bindings/splash_screen_binding.dart';
 import '../modules/splash_screen/views/splash_screen_view.dart';
 import '../modules/update_password/bindings/update_password_binding.dart';
@@ -55,9 +57,15 @@ class AppPages {
       binding: AddPelatihBinding(),
     ),
     GetPage(
+      name: _Paths.REPORT_PRESENCE,
+      page: () => ReportPresenceView(),
+      binding: ReportpresenceBinding(),
+    ),
+    GetPage(
       name: _Paths.LOGIN,
       page: () => const LoginView(),
       binding: LoginBinding(),
+      transition: Transition.fadeIn,
     ),
     GetPage(
       name: _Paths.NEW_PASSWORD,
