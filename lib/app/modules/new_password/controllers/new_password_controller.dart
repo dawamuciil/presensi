@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:presence/app/controllers/page_index_controller.dart';
 import 'package:presence/app/routes/app_pages.dart';
 import 'package:presence/app/widgets/toast/custom_toast.dart';
-import 'package:presence/company_data.dart';
 
 class NewPasswordController extends GetxController {
   final pageIndexController = Get.find<PageIndexController>();

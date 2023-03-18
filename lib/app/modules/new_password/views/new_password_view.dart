@@ -8,6 +8,8 @@ import 'package:presence/app/widgets/custom_input.dart';
 import '../controllers/new_password_controller.dart';
 
 class NewPasswordView extends GetView<NewPasswordController> {
+  const NewPasswordView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,10 +33,10 @@ class NewPasswordView extends GetView<NewPasswordController> {
           Container(
             height: MediaQuery.of(context).size.height * 35 / 100,
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.only(left: 32),
+            padding: const EdgeInsets.only(left: 32),
             decoration: BoxDecoration(
               gradient: AppColor.primaryGradient,
-              image: DecorationImage(
+              image: const DecorationImage(
                 image: AssetImage('assets/images/pattern-1-1.png'),
                 fit: BoxFit.cover,
               ),
@@ -42,7 +44,7 @@ class NewPasswordView extends GetView<NewPasswordController> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Text(
                   "Sistem Presensi Guru With Geolocation\nHaversine Formula",
                   style: TextStyle(
@@ -65,17 +67,18 @@ class NewPasswordView extends GetView<NewPasswordController> {
             height: MediaQuery.of(context).size.height * 65 / 100,
             width: MediaQuery.of(context).size.width,
             color: Colors.white,
-            padding: EdgeInsets.only(left: 20, right: 20, top: 36, bottom: 84),
+            padding:
+                const EdgeInsets.only(left: 20, right: 20, top: 36, bottom: 84),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  margin: EdgeInsets.only(bottom: 24),
+                  margin: const EdgeInsets.only(bottom: 24),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'New Password',
                         style: TextStyle(
                           fontSize: 18,
@@ -83,7 +86,7 @@ class NewPasswordView extends GetView<NewPasswordController> {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Text(
                         "You log in with the default password. To continue, you must create a new password.",
                         style: TextStyle(
@@ -128,9 +131,9 @@ class NewPasswordView extends GetView<NewPasswordController> {
                     ),
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Obx(
-                  () => Container(
+                  () => SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: ElevatedButton(
                       onPressed: () {
@@ -139,22 +142,22 @@ class NewPasswordView extends GetView<NewPasswordController> {
                           controller.newPassword();
                         }
                       },
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 18),
+                        backgroundColor: AppColor.primary,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
                       child: Text(
                         (controller.isLoading.isFalse)
                             ? 'Continue'
                             : 'Loading...',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                           fontFamily: 'poppins',
                           fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(vertical: 18),
-                        elevation: 0,
-                        primary: AppColor.primary,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
                         ),
                       ),
                     ),

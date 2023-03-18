@@ -62,7 +62,7 @@ class AddPelatihView extends GetView<AddGuruController> {
             hint: ' Guru',
           ),
           const SizedBox(height: 8),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             child: Obx(
               () => ElevatedButton(
@@ -72,7 +72,7 @@ class AddPelatihView extends GetView<AddGuruController> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: AppColor.primary,
+                  backgroundColor: AppColor.primary,
                   padding: const EdgeInsets.symmetric(vertical: 18),
                   elevation: 0,
                   shape: RoundedRectangleBorder(

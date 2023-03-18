@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:presence/app/modules/report_presence/controllers/report_presence_controller.dart';
 import 'package:presence/app/modules/report_presence/user_model.dart';
@@ -62,7 +61,7 @@ class ReportPresenceView extends GetView<ReportPresenceController> {
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(
                               width: 1,
-                              color: AppColor.primaryExtraSoft,
+                              color: AppColor.primary,
                             ),
                           ),
                           padding: const EdgeInsets.only(
@@ -79,12 +78,12 @@ class ReportPresenceView extends GetView<ReportPresenceController> {
                                     children: [
                                       Text(
                                         "Name : ${snapshot.data![index].name}",
-                                        style: TextStyle(fontSize: 12),
+                                        style: const TextStyle(fontSize: 12),
                                       ),
                                       const SizedBox(height: 5),
                                       Text(
                                         "Email : ${snapshot.data![index].email}",
-                                        style: TextStyle(fontSize: 12),
+                                        style: const TextStyle(fontSize: 12),
                                       ),
                                     ],
                                   ),
