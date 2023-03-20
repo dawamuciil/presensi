@@ -110,6 +110,11 @@ class ReportPresenceView extends GetView<ReportPresenceController> {
               }),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: AppColor.primary,
+        child: const Icon(Icons.download),
+      ),
     );
   }
 }

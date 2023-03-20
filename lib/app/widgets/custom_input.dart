@@ -51,7 +51,7 @@ class _CustomInputState extends State<CustomInput> {
             label: Text(
               widget.label,
               style: TextStyle(
-                color: AppColor.secondarySoft,
+                color: AppColor.primary,
                 fontSize: 14,
               ),
             ),
@@ -62,7 +62,7 @@ class _CustomInputState extends State<CustomInput> {
               fontSize: 14,
               fontFamily: 'poppins',
               fontWeight: FontWeight.w500,
-              color: AppColor.secondarySoft,
+              color: Colors.black45,
             ),
           ),
         ),

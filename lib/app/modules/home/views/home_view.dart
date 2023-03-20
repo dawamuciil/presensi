@@ -28,7 +28,6 @@ class HomeView extends GetView<HomeController> {
                 Map<String, dynamic> user = snapshot.data!.data()!;
                 String defaultImage =
                     "https://ui-avatars.com/api/?name=${user['name']}";
-
                 return ListView(
                   shrinkWrap: true,
                   physics: const BouncingScrollPhysics(),
