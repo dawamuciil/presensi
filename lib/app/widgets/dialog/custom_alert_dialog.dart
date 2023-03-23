@@ -51,7 +51,7 @@ class CustomAlertDialog {
             obsecureText: true,
           ),
           Container(
-            margin: const EdgeInsets.only(bottom: 16),
+            margin: const EdgeInsets.only(bottom: 10),
             child: Row(
               children: [
                 Expanded(

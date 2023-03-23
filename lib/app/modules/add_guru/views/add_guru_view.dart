@@ -61,6 +61,11 @@ class AddPelatihView extends GetView<AddGuruController> {
             label: 'Job',
             hint: ' Guru',
           ),
+          CustomInput(
+            controller: controller.roleC,
+            label: 'Role',
+            hint: 'Admin / Guru',
+          ),
           const SizedBox(height: 8),
           SizedBox(
             width: MediaQuery.of(context).size.width,

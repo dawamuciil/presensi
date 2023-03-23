@@ -12,6 +12,7 @@ class AddGuruController extends GetxController {
   TextEditingController jobC = TextEditingController();
   TextEditingController nipC = TextEditingController();
   TextEditingController emailC = TextEditingController();
+  TextEditingController roleC = TextEditingController();
   TextEditingController passAdminC = TextEditingController();
 
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -34,7 +35,7 @@ class AddGuruController extends GetxController {
             "job": jobC.text,
             "email": emailC.text,
             "uid": uid,
-            "role": "guru",
+            "role": roleC.text,
             "createdAt": DateTime.now().toIso8601String(),
           });
 
@@ -72,6 +73,7 @@ class AddGuruController extends GetxController {
     if (nameC.text.isNotEmpty &&
         jobC.text.isNotEmpty &&
         nipC.text.isNotEmpty &&
+        roleC.text.isNotEmpty &&
         emailC.text.isNotEmpty) {
       isLoading.value = true;
       CustomAlertDialog.confirmAdmin(
