@@ -182,10 +182,7 @@ class LoginView extends GetView<LoginController> {
                     ),
                   ),
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.only(top: 4),
-                  alignment: Alignment.centerRight,
+                Expanded(
                   child: TextButton(
                     onPressed: () => Get.toNamed(Routes.FORGOT_PASSWORD),
                     style: TextButton.styleFrom(

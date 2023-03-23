@@ -58,7 +58,7 @@ class _CustomInputState extends State<CustomInput> {
             floatingLabelBehavior: FloatingLabelBehavior.always,
             border: InputBorder.none,
             hintText: widget.hint,
-            hintStyle: TextStyle(
+            hintStyle: const TextStyle(
               fontSize: 14,
               fontFamily: 'poppins',
               fontWeight: FontWeight.w500,

@@ -138,7 +138,6 @@ class NewPasswordView extends GetView<NewPasswordController> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (controller.isLoading.isFalse) {
-                          print('exc');
                           controller.newPassword();
                         }
                       },

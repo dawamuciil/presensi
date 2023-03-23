@@ -29,15 +29,18 @@ class PresenceController extends GetxController {
           position.latitude,
           position.longitude);
 
-      // update position ( store to database )
-      await updatePosition(position, address);
-      // presence ( store to database )
-      await processPresence(position, address, distance);
-      isLoading.value = false;
+      if (distance <= 200) {
+        await updatePosition(position, address);
+        // presence ( store to database )
+        await processPresence(position, address, distance);
+        isLoading.value = false;
+      } else {
+        isLoading.value = false;
+        CustomToast.errorToast('Error', 'Tidak Dalam Area Presensi');
+      }
     } else {
       isLoading.value = false;
-      Get.snackbar("Terjadi kesalahan", determinePosition["message"]);
-      print(determinePosition["error"]);
+      CustomToast.errorToast("Error", determinePosition["message"]);
     }
   }
 

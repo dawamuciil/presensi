@@ -58,7 +58,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.REPORT_PRESENCE,
-      page: () => ReportPresenceView(),
+      page: () => const ReportPresenceView(),
       binding: ReportpresenceBinding(),
     ),
     GetPage(
@@ -69,7 +69,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.NEW_PASSWORD,
-      page: () => NewPasswordView(),
+      page: () => const NewPasswordView(),
       binding: NewPasswordBinding(),
     ),
     GetPage(
