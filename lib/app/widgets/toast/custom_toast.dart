@@ -6,7 +6,7 @@ import 'package:presence/app/style/app_color.dart';
 class CustomToast {
   static errorToast(String? title, String? message) {
     Get.rawSnackbar(
-      duration: const Duration(seconds: 4),
+      duration: const Duration(seconds: 5),
       dismissDirection: DismissDirection.horizontal,
       messageText: Row(
         crossAxisAlignment: CrossAxisAlignment.center,

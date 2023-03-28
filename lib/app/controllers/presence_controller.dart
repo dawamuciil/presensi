@@ -29,14 +29,15 @@ class PresenceController extends GetxController {
           position.latitude,
           position.longitude);
 
+      await updatePosition(position, address);
+
       if (distance <= 200) {
-        await updatePosition(position, address);
-        // presence ( store to database )
         await processPresence(position, address, distance);
         isLoading.value = false;
       } else {
         isLoading.value = false;
-        CustomToast.errorToast('Error', 'Tidak Dalam Area Presensi');
+        CustomToast.errorToast(
+            'Tidak Dalam Area Presensi!', 'Minimal Jarak 200 M dari Sekolah');
       }
     } else {
       isLoading.value = false;
@@ -156,18 +157,17 @@ class PresenceController extends GetxController {
     }
 
     if (snapshotPreference.docs.isEmpty) {
-      //case :  never presence -> set check in presence
+
       firstPresence(
           presenceCollection, todayDocId, position, address, distance, inArea);
     } else {
       DocumentSnapshot<Map<String, dynamic>> todayDoc =
           await presenceCollection.doc(todayDocId).get();
-      // already presence before ( another day ) -> have been check in today or check out?
+
       if (todayDoc.exists == true) {
         Map<String, dynamic>? dataPresenceToday = todayDoc.data();
-        // case : already check in
+
         if (dataPresenceToday?["keluar"] != null) {
-          // case : already check in and check out
           CustomToast.successToast(
               "Success", "you already check in and check out");
         } else {
@@ -176,7 +176,6 @@ class PresenceController extends GetxController {
               distance, inArea);
         }
       } else {
-        // case : not yet check in today
         checkinPresence(presenceCollection, todayDocId, position, address,
             distance, inArea);
       }
@@ -198,12 +197,8 @@ class PresenceController extends GetxController {
     bool serviceEnabled;
     LocationPermission permission;
 
-    // Test if location services are enabled.
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      // Location services are not enabled don't continue
-      // accessing the position and request users of the
-      // App to enable the location services.
       return Future.error('Location services are disabled.');
     }
 
@@ -211,12 +206,6 @@ class PresenceController extends GetxController {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        // Permissions are denied, next time you could try
-        // requesting permissions again (this is also where
-        // Android's shouldShowRequestPermissionRationale
-        // returned true. According to Android guidelines
-        // your App should show an explanatory UI now.
-        // return Future.error('Location permissions are denied');
         return {
           "message":
               "Tidak dapat mengakses karena anda menolak permintaan lokasi",
@@ -226,7 +215,6 @@ class PresenceController extends GetxController {
     }
 
     if (permission == LocationPermission.deniedForever) {
-      // Permissions are denied forever, handle appropriately.
       return {
         "message":
             "Location permissions are permanently denied, we cannot request permissions.",
@@ -234,8 +222,6 @@ class PresenceController extends GetxController {
       };
     }
 
-    // When we reach here, permissions are granted and we can
-    // continue accessing the position of the device.
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.bestForNavigation);
     return {
