@@ -17,6 +17,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
         leading: IconButton(
           icon: SvgPicture.asset(
             'assets/icons/arrow-left.svg',
+            // ignore: deprecated_member_use
             color: Colors.white,
           ),
           onPressed: () => Get.back(),

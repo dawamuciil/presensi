@@ -15,6 +15,7 @@ abstract class Routes {
   static const DETAIL_PRESENCE = _Paths.DETAIL_PRESENCE;
   static const ALL_PRESENCE = _Paths.ALL_PRESENCE;
   static const REPORT_PRESENCE = _Paths.REPORT_PRESENCE;
+  static const DETAIL_REPORT = _Paths.DETAIL_REPORT;
 }
 
 abstract class _Paths {
@@ -31,4 +32,5 @@ abstract class _Paths {
   static const DETAIL_PRESENCE = '/detail-presence';
   static const ALL_PRESENCE = '/all-presence';
   static const REPORT_PRESENCE = '/report_presence';
+  static const DETAIL_REPORT = '/detail-report';
 }

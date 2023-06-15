@@ -1,12 +1,13 @@
 import 'package:get/get.dart';
-import 'package:presence/app/modules/all_presence/bindings/all_presence_binding.dart';
-import 'package:presence/app/modules/all_presence/views/all_presence_view.dart';
-import 'package:presence/app/modules/report_presence/views/report_presence_view.dart';
 
 import '../modules/add_guru/bindings/add_guru_binding.dart';
 import '../modules/add_guru/views/add_guru_view.dart';
+import '../modules/all_presence/bindings/all_presence_binding.dart';
+import '../modules/all_presence/views/all_presence_view.dart';
 import '../modules/detail_presence/bindings/detail_presence_binding.dart';
 import '../modules/detail_presence/views/detail_presence_view.dart';
+import '../modules/detail_report/bindings/detail_report_binding.dart';
+import '../modules/detail_report/views/detail_report_view.dart';
 import '../modules/forgot_password/bindings/forgot_password_binding.dart';
 import '../modules/forgot_password/views/forgot_password_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -18,6 +19,7 @@ import '../modules/new_password/views/new_password_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/report_presence/bindings/report_presence_binding.dart';
+import '../modules/report_presence/views/report_presence_view.dart';
 import '../modules/splash_screen/bindings/splash_screen_binding.dart';
 import '../modules/splash_screen/views/splash_screen_view.dart';
 import '../modules/update_password/bindings/update_password_binding.dart';
@@ -58,7 +60,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.REPORT_PRESENCE,
-      page: () => const ReportPresenceView(),
+      page: () => ReportPresenceView(),
       binding: ReportpresenceBinding(),
     ),
     GetPage(
@@ -97,6 +99,11 @@ class AppPages {
       name: _Paths.ALL_PRESENCE,
       page: () => const AllPresenceView(),
       binding: AllPresenceBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_REPORT,
+      page: () => DetailReportView(),
+      binding: DetailReportBinding(),
     ),
   ];
 }

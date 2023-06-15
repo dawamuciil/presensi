@@ -13,6 +13,7 @@ class CustomToast {
         children: [
           SvgPicture.asset(
             "assets/icons/info-circle.svg",
+            // ignore: deprecated_member_use
             color: Colors.white,
           ),
           const SizedBox(width: 16),
@@ -57,6 +58,7 @@ class CustomToast {
         children: [
           SvgPicture.asset(
             "assets/icons/success-circle.svg",
+            // ignore: deprecated_member_use
             color: Colors.white,
           ),
           const SizedBox(width: 16),

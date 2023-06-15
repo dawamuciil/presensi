@@ -1,8 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:presence/app/modules/report_presence/controllers/report_presence_controller.dart';
-import 'package:presence/app/modules/report_presence/user_model.dart';
+import 'package:presence/app/routes/app_pages.dart';
 import 'package:presence/app/style/app_color.dart';
 
 class ReportPresenceView extends GetView<ReportPresenceController> {
@@ -38,7 +39,7 @@ class ReportPresenceView extends GetView<ReportPresenceController> {
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(20),
-          child: FutureBuilder<List<UserModel>>(
+          child: FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
               future: controller.getAllUser(),
               builder: (context, snapshot) {
                 switch (snapshot.connectionState) {
@@ -46,60 +47,66 @@ class ReportPresenceView extends GetView<ReportPresenceController> {
                     return const Center(child: CircularProgressIndicator());
                   case ConnectionState.active:
                   case ConnectionState.done:
-                    int Listalluser = snapshot.data!.length;
+                    var alluser = snapshot.data!.docs;
                     return ListView.separated(
                       shrinkWrap: true,
-                      itemCount: Listalluser,
+                      itemCount: alluser.length,
                       physics: const BouncingScrollPhysics(),
                       padding: EdgeInsets.zero,
                       separatorBuilder: (context, index) =>
                           const SizedBox(height: 16),
                       itemBuilder: (c, index) {
-                        return Container(
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(
-                              width: 1,
-                              color: AppColor.primary,
-                            ),
-                          ),
-                          padding: const EdgeInsets.only(
-                              left: 24, top: 20, right: 29, bottom: 20),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Name : ${snapshot.data![index].name}",
-                                        style: const TextStyle(fontSize: 12),
-                                      ),
-                                      const SizedBox(height: 5),
-                                      Text(
-                                        "Email : ${snapshot.data![index].email}",
-                                        style: const TextStyle(fontSize: 12),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                        var presenceData = alluser[index].data();
+                        return InkWell(
+                          onTap: () => Get.toNamed(Routes.DETAIL_REPORT,
+                              arguments: presenceData),
+                          borderRadius: BorderRadius.circular(8),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                width: 1,
+                                color: AppColor.primary,
                               ),
-                              Center(
-                                heightFactor: 3,
-                                child: Text(
-                                  "Job : ${snapshot.data![index].job}",
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.black,
-                                  ),
+                            ),
+                            padding: const EdgeInsets.only(
+                                left: 24, top: 20, right: 29, bottom: 20),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          presenceData["name"],
+                                          style: const TextStyle(fontSize: 12),
+                                        ),
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          presenceData["email"],
+                                          style: const TextStyle(fontSize: 12),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                              )
-                            ],
+                                Center(
+                                  heightFactor: 3,
+                                  child: Text(
+                                    presenceData["job"],
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         );
                       },
@@ -109,11 +116,6 @@ class ReportPresenceView extends GetView<ReportPresenceController> {
                 }
               }),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: AppColor.primary,
-        child: const Icon(Icons.download),
       ),
     );
   }

@@ -82,9 +82,9 @@ class CustomBottomNavigationBar extends GetView<PageIndexController> {
                                 margin: const EdgeInsets.only(bottom: 4),
                                 child: (controller.pageIndex.value == 2)
                                     ? SvgPicture.asset(
-                                        'assets/icons/profile-active.svg')
+                                        'assets/icons/people.svg')
                                     : SvgPicture.asset(
-                                        'assets/icons/profile.svg'),
+                                        'assets/icons/profile-1.svg'),
                               ),
                               Text(
                                 "Profile",
@@ -118,6 +118,7 @@ class CustomBottomNavigationBar extends GetView<PageIndexController> {
                   child: (controller.presenceController.isLoading.isFalse)
                       ? SvgPicture.asset(
                           'assets/icons/fingerprint.svg',
+                          // ignore: deprecated_member_use
                           color: Colors.white,
                         )
                       : const Center(

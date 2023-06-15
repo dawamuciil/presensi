@@ -9,8 +9,10 @@ class ReportPresenceController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  Future<List<UserModel>> getAllUser() async {
-    return await _userRepo.AllUser();
+  Future<QuerySnapshot<Map<String, dynamic>>> getAllUser() async {
+    QuerySnapshot<Map<String, dynamic>> query =
+        await firestore.collection("pelatih").get();
+    return query;
   }
 
   Stream<QuerySnapshot<Map<String, dynamic>>> streamAll() async* {
