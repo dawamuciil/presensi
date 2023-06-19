@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import '../../../style/app_color.dart';
 import '../../../widgets/presence_tile.dart';
 import '../controllers/detail_report_controller.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class DetailReportView extends GetView<DetailReportController> {
   final Map<String, dynamic> presenceData = Get.arguments;
@@ -16,7 +17,7 @@ class DetailReportView extends GetView<DetailReportController> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Report Presence',
+          'All Presence',
           style: TextStyle(
             color: AppColor.secondary,
             fontSize: 14,
@@ -29,6 +30,58 @@ class DetailReportView extends GetView<DetailReportController> {
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
+        actions: [
+          Container(
+            width: 44,
+            height: 44,
+            margin: const EdgeInsets.only(bottom: 8, top: 8, right: 8),
+            child: ElevatedButton(
+              onPressed: () {
+                Get.dialog(
+                  Dialog(
+                    child: SizedBox(
+                      height: 372,
+                      child: SfDateRangePicker(
+                        todayHighlightColor: AppColor.card,
+                        headerHeight: 50,
+                        headerStyle: const DateRangePickerHeaderStyle(
+                            textAlign: TextAlign.center),
+                        monthViewSettings:
+                            const DateRangePickerMonthViewSettings(
+                                firstDayOfWeek: 1),
+                        selectionMode: DateRangePickerSelectionMode.range,
+                        selectionColor: AppColor.card,
+                        rangeSelectionColor: AppColor.card.withOpacity(0.2),
+                        viewSpacing: 10,
+                        showActionButtons: true,
+                        onCancel: () => Get.back(),
+                        onSubmit: (data) {
+                          if (data != null) {
+                            PickerDateRange range = data as PickerDateRange;
+                            if (range.endDate != null) {
+                              controller.pickDate(
+                                  range.startDate!, range.endDate!);
+                            }
+                          }
+                          //else skip
+                        },
+                      ),
+                    ),
+                  ),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColor.card,
+                elevation: 0,
+                padding: EdgeInsets.zero,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              child: SvgPicture.asset('assets/icons/filter.svg'),
+            ),
+          )
+        ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1),
           child: Container(

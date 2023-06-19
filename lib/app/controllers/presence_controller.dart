@@ -157,7 +157,6 @@ class PresenceController extends GetxController {
     }
 
     if (snapshotPreference.docs.isEmpty) {
-
       firstPresence(
           presenceCollection, todayDocId, position, address, distance, inArea);
     } else {

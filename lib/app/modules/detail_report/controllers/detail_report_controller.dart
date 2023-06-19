@@ -38,4 +38,12 @@ class DetailReportController extends GetxController {
       return query;
     }
   }
+
+  void pickDate(DateTime pickStart, DateTime pickEnd) {
+    start = pickStart;
+    end = pickEnd;
+
+    update();
+    Get.back();
+  }
 }
